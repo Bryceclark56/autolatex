@@ -15,6 +15,7 @@ int main(int argc, char** argv)
 	const struct inotify_event *event;
 	const char cmd_template[] = "pdflatex -interaction nonstopmode %s";
 	char* command;
+	const char mupdf_update_cmd[] = "pkill -HUP mupdf";
 
 	command = malloc(sizeof cmd_template + strlen(argv[1]) + 1);
 
@@ -52,10 +53,10 @@ int main(int argc, char** argv)
 				if (event->mask & (IN_MOVE_SELF | IN_IGNORED)) {
 					system("clear");
 					system(command);
+					system(mupdf_update_cmd);
 				}
 
 				if (event->mask & IN_IGNORED) {
-					printf("Wow!\n");
 					inotify_rm_watch(ifd, wd);
 					wd = inotify_add_watch(ifd, argv[1], (IN_MOVE | IN_IGNORED));
 				}
