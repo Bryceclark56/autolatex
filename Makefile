@@ -4,7 +4,8 @@ OUTPUT 	= build/autolatex
 SRC 	= src/autolatex.c
 
 
-#all:build
-
-all:
+all: build $(SRC)
 	$(CC) $(CFLAGS) $(SRC) -o $(OUTPUT)
+
+build:
+	mkdir build

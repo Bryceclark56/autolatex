@@ -8,6 +8,19 @@ When it detects that I have saved/modified the file,
 
 Afterwards, it will force mupdf process to update view of the pdf.
 
+## Dependencies
+
+### Runtime dependencies
+
+- inotify
+- mupdf
+- pdflatex
+
+### Build dependencies
+
+- Clang
+- musl
+
 ## Usage
 
 ```bash
